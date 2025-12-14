@@ -1,0 +1,111 @@
+.navbar {
+    background-color: #333;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.navbar-logo {
+    color: #fff;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.navbar-menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-menu li {
+    margin: 0 15px;
+}
+
+.navbar-menu a {
+    color: #fff;
+    text-decoration: none;
+    padding: 15px 0;
+    display: block;
+    transition: color 0.3s;
+}
+
+.navbar-menu a:hover {
+    color: #f39c12;
+}
+
+.navbar-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 3px 0;
+    transition: 0.3s;
+}
+
+/* Responsive untuk mobile */
+@media screen and (max-width: 768px) {
+    .navbar-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #333;
+        flex-direction: column;
+        display: none;
+    }
+
+    .navbar-menu.active {
+        display: flex;
+    }
+
+    .navbar-toggle {
+        display: flex;
+    }
+}
+
+/* Styling untuk logo */
+.navbar-logo {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 46px;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+    transition: border-color 0.3s;
+}
+
+.navbar-logo:hover {
+    border-color: #f39c12;
+    /* Warna garis saat hover */
+}
+
+/* Responsivitas untuk mobile */
+@media screen and (max-width: 768px) {
+    .navbar-logo {
+        width: 40px;
+        /* Lebih kecil di mobile */
+        height: 40px;
+        line-height: 36px;
+        font-size: 16px;
+    }
+}

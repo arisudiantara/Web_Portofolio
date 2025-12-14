@@ -1,0 +1,82 @@
+main {
+    min-height: 50vh;
+    /* Minimal full viewport height: Main mengambil setidaknya 1 halaman penuh, tapi bisa expand jika ada konten lebih */
+    background-color: rgb(151, 150, 150);
+}
+
+
+.text-rotator-container {
+    height: 100px;
+    /* Tinggi disesuaikan dengan tinggi font agar tidak bergeser */
+    overflow: hidden;
+    /* Menyembunyikan teks yang tidak aktif */
+    font-size: 36px;
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+    position: relative;
+    /* Tambahan: Agar text-item bisa diposisikan relatif terhadap container */
+    text-align: center;
+    /* Tambahan: Untuk centering horizontal */
+}
+
+/* Pengaturan Teks Umum */
+.text-item {
+    position: absolute;
+    /* Penting agar keduanya bertumpuk */
+    opacity: 0;
+    /* Default: Sembunyikan semua teks */
+    transition: opacity 0.5s;
+    /* Animasi perpindahan agar halus */
+    top: 50%;
+    /* Tambahan: Posisi vertikal di tengah */
+    left: 50%;
+    /* Tambahan: Posisi horizontal di tengah */
+    transform: translate(-50%, -50%);
+    /* Tambahan: Geser ke tengah berdasarkan ukuran teks sendiri */
+    white-space: nowrap;
+    /* Tambahan: Mencegah teks wrap jika panjang */
+}
+
+/* Animasi untuk Teks 1 */
+.text-1 {
+    animation: fadeInOut 10s infinite;
+    /* Loop 10 detik tanpa henti */
+}
+
+/* Animasi untuk Teks 2 */
+.text-2 {
+    animation: fadeInOut 10s infinite;
+    animation-delay: 5s;
+    /* Mulai animasi Teks 2 setelah Teks 1 selesai (setelah 5 detik) */
+    /* Hapus justify-content: center; text (ini typo dan tidak diperlukan) */
+}
+
+/* Definisi Keyframes: Muncul, Bertahan, dan Menghilang */
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+    }
+
+    /* Awal: Tersembunyi */
+    5% {
+        opacity: 1;
+    }
+
+    /* Muncul (fade in) */
+    45% {
+        opacity: 1;
+    }
+
+    /* Bertahan 40% dari durasi (10s*0.4=4s) */
+    50% {
+        opacity: 0;
+    }
+
+    /* Menghilang (fade out) */
+    100% {
+        opacity: 0;
+    }
+
+    /* Tetap tersembunyi hingga loop berikutnya */
+}

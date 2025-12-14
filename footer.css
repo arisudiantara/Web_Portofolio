@@ -1,0 +1,111 @@
+/* Styling untuk footer */
+footer {
+    position: static;
+    /* Ubah dari fixed ke static agar di bawah konten */
+    width: 100%;
+    /* Full lebar halaman */
+    background: rgb(41, 39, 39);
+    /* Warna latar abu-abu gelap */
+    color: #fff;
+    padding: 20px 0;
+    /* Padding atas-bawah */
+    text-align: center;
+    /* Tengah semua elemen */
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    /* Sebar elemen rata */
+    align-items: center;
+    max-width: 1200px;
+    /* Lebar maksimal */
+    margin: 0 auto;
+    /* Tengah footer */
+    padding: 0 20px;
+}
+
+.footer-menu {
+    flex: 1;
+    /* Tengah footer */
+}
+
+.footer-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    /* Menu vertikal (baris ke bawah) */
+    gap: 5px;
+}
+
+.footer-menu a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    padding: 5px;
+    display: block;
+    transition: color 0.3s;
+}
+
+.footer-menu a:hover {
+    color: #f39c12;
+    /* Warna kuning saat hover */
+}
+
+.footer-contact {
+    flex: 1;
+    /* Kiri footer */
+    text-align: left;
+    font-size: 12px;
+}
+
+.footer-social {
+    flex: 1;
+    /* Kanan footer */
+    text-align: right;
+}
+
+.footer-social .footer-text {
+    text-align: top;
+    margin-bottom: 15px;
+    bottom: 100px;
+    padding-right: 25px;
+}
+
+.footer-social a {
+    color: #fff;
+    text-decoration: none;
+    width: 20px;
+    height: 20px;
+    margin: 2px;
+    cursor: pointer;
+    padding: 5px;
+    font-size: 25px;
+}
+
+.footer-email {
+    margin-top: 10px;
+    font-size: 12px;
+}
+
+.footer-email a {
+    color: #f39c12;
+    text-decoration: none;
+}
+
+/* Responsivitas untuk mobile */
+@media screen and (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        /* Stack vertikal di mobile */
+        gap: 10px;
+    }
+
+    .footer-menu ul {
+        flex-direction: row;
+        /* Menu horizontal di mobile untuk hemat ruang */
+        justify-content: center;
+    }
+}
