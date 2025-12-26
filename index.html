@@ -4,26 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beranda - Portolio</title>
-    <link rel="stylesheet" href="../assets/css/main.css">
-    <link rel="stylesheet" href="../assets/css/navbar.css">
-    <link rel="stylesheet" href="../assets/css/footer.css">
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <title>Portofolio - I Ketut Ari Sudiantara</title>
 
-    <!--font awesome-->
-    <script src="https://kit.fontawesome.com/9b1a37caab.js" crossorigin="anonymous"></script>
-
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+    <!-- NAVBAR -->
     <nav class="navbar">
         <div class="navbar-container">
-            <a href="index.html" class="navbar-logo">AS</a>
+            <a href="#home" class="navbar-logo">AS</a>
             <ul class="navbar-menu">
-                <li><a href="index.html">Beranda</a></li>
-                <li><a href="about.html">Tentang Saya</a></li>
-                <li><a href="pengalaman.html">Pengalaman</a></li>
-                <li><a href="projek.html">Projek</a></li>
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#about">Tentang Saya</a></li>
+                <li><a href="#projects">Projek</a></li>
+                <li><a href="index_materi.html">Materi</a></li>
             </ul>
             <div class="navbar-toggle" id="mobile-menu">
                 <span class="bar"></span>
@@ -33,52 +30,120 @@
         </div>
     </nav>
 
-    <!--isi-->
+    <!-- MAIN CONTENT -->
+    <main id="main-content">
 
-    <main>
-        <div class="text-rotator-container">
-            <span class="text-item text-1">Selamat Datang</span>
-            <span class="text-item text-2">Di Web Portofolio Saya.</span>
-        </div>
+        <!-- SECTION: BERANDA -->
+        <section id="home">
+            <!-- BAGIAN ANIMASI TELAH DIPERBAIKI CSS-NYA -->
+            <div class="text-rotator-container">
+                <span class="text-item text-1">Selamat Datang</span>
+                <span class="text-item text-2">di Web Portofolio Saya.</span>
+            </div>
 
-        <div class="section__text">
-            <p class="section__text__p1">Halo, saya</p>
-            <h1 class="title">Ari Sudiantara</h1>
-            <p class="section__text__p2">Frontend Developer</p>
-            <div class="btn-container">
-                <button class="btn btn-color-2" onclick="window.open('./assets/resume-example.pdf')">
-                    Download CV
-                </button>
+            <div class="section__text">
+                <p class="section__text__p1">Halo, saya</p>
+                <h1 class="title">Ari Sudiantara</h1>
+                <p class="section__text__p2">Mahasiswa PNB</p>
             </div>
-            <div id="socials-container">
-                <img src="../assets/img/linkedin.png" alt="My LinkedIn profile" class="icon"
-                    onclick="location.href='https://linkedin.com/'" />
-                <img src="../assets/img/github.png" alt="My Github profile" class="icon"
-                    onclick="location.href='https://github.com/'" />
+        </section>
+
+        <!-- SECTION: TENTANG SAYA -->
+        <section id="about">
+            <h1>Tentang Saya</h1>
+            <div class="about-container">
+                <img src="foto.webp" alt="Foto Saya">
+
+                <div class="text">
+                    <div class="section">
+                        <h2>Profil Diri</h2>
+                        <p>Halo! Saya I Ketut Ari Sudiantara, seorang Mahasiswa dari Politeknik Negeri Bali yang
+                            bersemangat dalam teknologi dan inovasi. Saya senang belajar hal baru serta berkolaborasi
+                            dengan orang lain untuk menciptakan solusi yang bermanfaat.</p>
+                        <p>Dalam waktu luang, saya suka membaca buku, belajar dan mencoba hal-hal baru, serta menonton
+                            youtube.
+                        </p>
+                    </div>
+
+                    <div class="section">
+                        <h2>Pendidikan</h2>
+                        <ul>
+                            <li><strong>Sekolah Dasar</strong>: SD N1 Perean Kangin.</li>
+                            <li><strong>SMP</strong>: SMP N2 Baturiti.</li>
+                            <li><strong>SMA</strong>: SMA N1 Baturiti.</li>
+                        </ul>
+                    </div>
+
+                    <div class="section">
+                        <h2>Skill</h2>
+                        <h3>Keterampilan Teknis</h3>
+                        <ul>
+                            <li>HTML, CSS, JavaScript, Java</li>
+                            <li>Tools: VS Code</li>
+                        </ul>
+                        <h3>Keterampilan Lunak</h3>
+                        <ul>
+                            <li>Komunikasi yang efektif</li>
+                            <li>Pemecahan masalah</li>
+                            <li>Kerja tim</li>
+                            <li>Manajemen waktu</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-        </div>
+        </section>
+
+        <!-- SECTION PROJEK -->
+        <section id="projects">
+            <p class="section__text__p1">Lihat Karya Terbaru Saya</p>
+            <h1 class="title">Projek</h1>
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
+
+                <!-- Projek 1 -->
+                <div class="project-card">
+                    <img src="projek1.png" alt="Project 1" class="project-img">
+                    <h2 class="project-title">Web Portofolio Pribadi</h2>
+                    <button class="btn btn-color-2" style="width: 100%; font-size: 0.8rem;">Lihat Detail</button>
+                </div>
+
+                <!-- Projek 2 -->
+                <div class="project-card">
+                    <img src="https://picsum.photos/seed/proj2/300/200" alt="Project 2" class="project-img">
+                    <h2 class="project-title">none</h2>
+                    <button class="btn btn-color-2" style="width: 100%; font-size: 0.8rem;">Lihat Detail</button>
+                </div>
+
+                <!-- Projek 3 -->
+                <div class="project-card">
+                    <img src="https://picsum.photos/seed/proj3/300/200" alt="Project 3" class="project-img">
+                    <h2 class="project-title">none</h2>
+                    <button class="btn btn-color-2" style="width: 100%; font-size: 0.8rem;">Lihat Detail</button>
+                </div>
+
+            </div>
+        </section>
+
     </main>
 
-
-
-    <!--FOOTER-->
-
+    <!-- FOOTER -->
     <footer>
         <div class="footer-content">
             <div class="footer-contact">
-                <p><strong>kontak:</strong><br>Alamat: Baturiti, Tabanan, Bali<br>Telepon: 087866769478</p>
+                <p><strong>Kontak:</strong><br>
+                    Alamat: Baturiti, Tabanan, Bali<br>
+                    Telepon: 087866769478</p>
             </div>
+
             <div class="footer-menu">
                 <ul>
-                    <li><a href="index.html">Halaman Utama</a></li>
-                    <li><a href="about.html">Tentang Saya</a></li>
-                    <li><a href="pengalaman.html">Pengalaman</a></li>
-                    <li><a href="projek.html">Projek</a></li>
+                    <li><a href="#home">Halaman Utama</a></li>
+                    <li><a href="#about">Tentang Saya</a></li>
+                    <li><a href="#projects">Projek</a></li>
                 </ul>
             </div>
 
             <div class="footer-social">
-                <div class="footer-text"> <b>Hubungi Saya:</b></div>
+                <div class="footer-text"><b>Hubungi Saya:</b></div>
                 <a href="https://www.instagram.com/tutari_25?igsh=MWQyM2l4ZGdwNGQyZA=="><i
                         class="fa-brands fa-instagram"></i></a>
                 <a href="https://www.facebook.com/share/1D73yG4CUs/"><i class="fa-brands fa-square-facebook"></i></a>
@@ -86,12 +151,12 @@
             </div>
         </div>
         <div class="footer-email">
-            <a href="arisudiantara643@gmail.com">email: arisudiantara643@gmail.com</a>
+            <a href="mailto:arisudiantara643@gmail.com">email: arisudiantara643@gmail.com</a>
         </div>
     </footer>
 
-    <script src="../assets/js/main.js"></script>
-    <script src="../assets/js/navbar.js"></script>
+    <!-- JAVASCRIPT -->
+    <script src="script.js"></script>
 </body>
 
 </html>

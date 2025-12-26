@@ -1,82 +1,451 @@
-main {
-    min-height: 50vh;
-    /* Minimal full viewport height: Main mengambil setidaknya 1 halaman penuh, tapi bisa expand jika ada konten lebih */
-    background-color: rgb(151, 150, 150);
+/* =========================================
+    RESET & GLOBAL STYLES
+    ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
 
-.text-rotator-container {
-    height: 100px;
-    /* Tinggi disesuaikan dengan tinggi font agar tidak bergeser */
-    overflow: hidden;
-    /* Menyembunyikan teks yang tidak aktif */
-    font-size: 36px;
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+#main-content {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    padding-top: 0;
+}
+
+h1,
+h2,
+h3 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+a {
     text-decoration: none;
-    font-weight: bold;
-    display: block;
-    position: relative;
-    /* Tambahan: Agar text-item bisa diposisikan relatif terhadap container */
-    text-align: center;
-    /* Tambahan: Untuk centering horizontal */
+    color: inherit;
 }
 
-/* Pengaturan Teks Umum */
+ul {
+    list-style: none;
+}
+
+/* =========================================
+    NAVBAR
+    ========================================= */
+.navbar {
+    background-color: #333;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    height: 70px;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 100%;
+}
+
+.navbar-logo {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    font-weight: bold;
+    color: #fff;
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+.navbar-logo:hover {
+    border-color: #f39c12;
+    background-color: rgba(243, 156, 18, 0.1);
+}
+
+.navbar-menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-menu li {
+    margin: 0 15px;
+}
+
+.navbar-menu a {
+    color: #fff;
+    padding: 10px 0;
+    display: block;
+    transition: color 0.3s;
+    font-weight: 500;
+    position: relative;
+}
+
+.navbar-menu a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #f39c12;
+    transition: width .3s;
+}
+
+.navbar-menu a.active-link::after {
+    width: 100%;
+}
+
+.navbar-menu a:hover,
+.navbar-menu a.active-link {
+    color: #f39c12;
+}
+
+.navbar-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 3px 0;
+    transition: 0.3s;
+}
+
+/* Responsive Navbar */
+@media screen and (max-width: 768px) {
+    .navbar-menu {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-color: #333;
+        flex-direction: column;
+        align-items: center;
+        display: none;
+        padding-bottom: 20px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .navbar-menu.active {
+        display: flex;
+    }
+
+    .navbar-menu li {
+        margin: 10px 0;
+    }
+
+    .navbar-toggle {
+        display: flex;
+    }
+
+    .navbar-logo {
+        width: 40px;
+        height: 40px;
+        font-size: 14px;
+    }
+}
+
+/* =========================================
+    SECTIONS GENERAL
+    ========================================= */
+section {
+    padding: 80px 20px;
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+section:nth-child(even) {
+    background-color: #e9e9e9;
+}
+
+/* =========================================
+    HOME / BERANDA (PERBAIKAN DI SINI)
+    ========================================= */
+#home {
+    min-height: 100vh;
+    padding-top: 100px;
+    text-align: center;
+    background: linear-gradient(135deg, #f4f4f4 0%, #dcdcdc 100%);
+}
+
+/* Container untuk animasi teks */
+.text-rotator-container {
+    position: relative;
+    /* PENTING: Agar posisi absolute anaknya berpatokan di sini */
+    height: 80px;
+    /* TINGGI DITAMBAH JADI 80px AGAR TEKS TIDAK TERPOTONG */
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 20px;
+    z-index: 10;
+    /* Memastikan di atas elemen lain */
+}
+
+/* Item Teks */
 .text-item {
     position: absolute;
-    /* Penting agar keduanya bertumpuk */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Metode Centering Paling Aman menggunakan Flexbox */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 1.8rem;
+    /* Ukuran font sedikit diperkecil agar muat di HP */
+    font-weight: bold;
+    color: #000;
+    /* Dijadikan hitam pekat agar jelas terlihat */
     opacity: 0;
-    /* Default: Sembunyikan semua teks */
-    transition: opacity 0.5s;
-    /* Animasi perpindahan agar halus */
-    top: 50%;
-    /* Tambahan: Posisi vertikal di tengah */
-    left: 50%;
-    /* Tambahan: Posisi horizontal di tengah */
-    transform: translate(-50%, -50%);
-    /* Tambahan: Geser ke tengah berdasarkan ukuran teks sendiri */
+    /* Default tersembunyi */
     white-space: nowrap;
-    /* Tambahan: Mencegah teks wrap jika panjang */
+    /* Teks tidak turun baris */
 }
 
-/* Animasi untuk Teks 1 */
 .text-1 {
     animation: fadeInOut 10s infinite;
-    /* Loop 10 detik tanpa henti */
 }
 
-/* Animasi untuk Teks 2 */
 .text-2 {
     animation: fadeInOut 10s infinite;
     animation-delay: 5s;
-    /* Mulai animasi Teks 2 setelah Teks 1 selesai (setelah 5 detik) */
-    /* Hapus justify-content: center; text (ini typo dan tidak diperlukan) */
 }
 
-/* Definisi Keyframes: Muncul, Bertahan, dan Menghilang */
+/* Animasi Fade In / Fade Out Saja */
 @keyframes fadeInOut {
     0% {
         opacity: 0;
     }
 
-    /* Awal: Tersembunyi */
-    5% {
-        opacity: 1;
-    }
-
-    /* Muncul (fade in) */
+    5%,
     45% {
         opacity: 1;
     }
 
-    /* Bertahan 40% dari durasi (10s*0.4=4s) */
-    50% {
-        opacity: 0;
-    }
-
-    /* Menghilang (fade out) */
+    50%,
     100% {
         opacity: 0;
     }
+}
 
-    /* Tetap tersembunyi hingga loop berikutnya */
+.section__text__p1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #666;
+}
+
+.title {
+    font-size: 3rem;
+    color: #2c3e50;
+    margin: 10px 0;
+}
+
+.section__text__p2 {
+    font-size: 1.5rem;
+    color: #f39c12;
+    font-weight: bold;
+    margin-bottom: 2rem;
+}
+
+/* =========================================
+    ABOUT
+    ========================================= */
+.about-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    max-width: 1200px;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.about-container img {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.4s ease;
+    border: 5px solid #fff;
+    display: block;
+}
+
+.about img:hover {
+    transform: scale(1.05);
+}
+
+.about .text {
+    flex: 1;
+    min-width: 300px;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.section {
+    margin-bottom: 25px;
+}
+
+.section ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+.section li {
+    margin-bottom: 8px;
+}
+
+/* =========================================
+    PROJEK
+    ========================================= */
+.project-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    background-color: #ddd;
+}
+
+.project-card {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    width: 300px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+}
+
+/* =========================================
+    FOOTER
+    ========================================= */
+footer {
+    background: rgb(41, 39, 39);
+    color: #fff;
+    padding: 40px 0 20px;
+    margin-top: auto;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.footer-contact,
+.footer-social {
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-menu {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.footer-menu ul {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.footer-menu a:hover {
+    color: #f39c12;
+    text-decoration: underline;
+}
+
+.footer-social a {
+    display: inline-block;
+    margin-right: 15px;
+    font-size: 1.5rem;
+    transition: color 0.3s;
+}
+
+.footer-social a:hover {
+    color: #f39c12;
+}
+
+.footer-email {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #555;
+    font-size: 0.9rem;
+}
+
+.footer-email a {
+    color: #f39c12;
+}
+
+@media screen and (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-menu ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .title {
+        font-size: 2.5rem;
+    }
+
+    /* Responsif text rotator */
+    .text-item {
+        font-size: 1.2rem;
+    }
+
+    .text-rotator-container {
+        height: 60px;
+    }
 }
